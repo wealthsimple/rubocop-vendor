@@ -5,6 +5,11 @@ Vendor/RollbarInterpolation:
   Enabled: true
   VersionAdded: '0.1.0'
 
+Vendor/RollbarLog:
+  Description: 'Avoid calls to `Rollbar.log`.'
+  Enabled: true
+  VersionAdded: '0.2.0'
+
 Vendor/RollbarLogger:
   Description: 'Use logger instead of `Rollbar.debug`, `info` or `warning` calls.'
   Enabled: true

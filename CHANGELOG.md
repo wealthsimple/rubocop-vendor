@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## master (unreleased)
 
+## 0.2.0 - 2019-04-23
+
+### Added
+
+* Introduce `Vendor/RollbarLog` cop. ([@cabello][])
+
 ## 0.1.0 - 2019-04-23
 
 ### Added

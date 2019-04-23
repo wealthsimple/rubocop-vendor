@@ -22,6 +22,27 @@ Rollbar.error(e, "Unable to sync account #{account.id}")
 Rollbar.error(e, "Unable to sync account", account_id: account.id)
 ```
 
+## Vendor/RollbarLog
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | 0.2.0 | -
+
+This cop checks for `Rollbar.log` usage and suggests specialized
+method calls instead.
+
+The main reason for this suggestion is consistency.
+
+### Examples
+
+```ruby
+# bad
+Rollbar.log('info', 'Stale message')
+
+# good
+Rollbar.info('Stale message')
+```
+
 ## Vendor/RollbarLogger
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
