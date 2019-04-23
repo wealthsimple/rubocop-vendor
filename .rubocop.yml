@@ -1,0 +1,38 @@
+# This is the configuration used to check the rubocop-vendor source code.
+
+inherit_from: .rubocop_todo.yml
+require:
+  - rubocop/cop/internal_affairs
+  - rubocop-vendor
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+  TargetRubyVersion: 2.4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Metrics/LineLength:
+  Max: 120
+
+Naming/FileName:
+  Exclude:
+    - lib/rubocop-vendor.rb
+
+RSpec/NestedGroups:
+  Max: 7
+
+Style/Documentation:
+  Exclude:
+    - lib/rubocop/cop/vendor_cops.rb
+
+Style/NumericPredicate:
+  Exclude:
+    - tasks/cops_documentation.rake

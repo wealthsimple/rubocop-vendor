@@ -1,0 +1,16 @@
+# This is the default configuration file.
+
+Vendor/RollbarInterpolation:
+  Description: 'Avoid interpolation to improve error grouping.'
+  Enabled: true
+  VersionAdded: '0.1.0'
+
+Vendor/RollbarLogger:
+  Description: 'Use logger instead of `Rollbar.debug`, `info` or `warning` calls.'
+  Enabled: true
+  VersionAdded: '0.1.0'
+
+Vendor/RollbarWithException:
+  Description: 'Always pass exception parameter when calling `Rollbar.error` or `critical`.'
+  Enabled: true
+  VersionAdded: '0.1.0'
