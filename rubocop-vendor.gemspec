@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.email = 'foss@wealthsimple.com'
   s.files = `git ls-files config lib LICENSE.txt README.md`.split($RS)
-  s.extra_rdoc_files = ['LICENSE.txt', 'README.md']
+  s.extra_rdoc_files = ['LICENSE', 'README.md']
   s.homepage = 'https://github.com/wealthsimple/rubocop-vendor'
   s.licenses = ['MIT']
   s.summary = 'Automatic vendor integration checking tool for Ruby code.'
