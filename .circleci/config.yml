@@ -72,5 +72,5 @@ workflows:
             branches:
               only: master
           requires:
-          - rake_default
+          - Ruby 2.4
 
