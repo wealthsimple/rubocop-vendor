@@ -16,25 +16,41 @@ module RuboCop
       #   Rollbar.info('Stale message')
       #
       class RollbarLog < Cop
+        include RangeHelp
+
         MSG = 'Use `Rollbar.%<method>s` instead of `Rollbar.log`.'
 
         def_node_matcher :bad_method?, <<-PATTERN
           (send
             (const nil? :Rollbar) :log
-            $({str sym} _) ...)
+            ({str sym} _) ...)
         PATTERN
 
         def on_send(node)
-          level = bad_method?(node)
-          return unless level
+          return unless bad_method?(node)
 
-          add_offense(level)
+          add_offense(node, location: offending_range(node))
+        end
+
+        def autocorrect(node)
+          range = offending_range(node)
+          replacement = "#{node.children[2].value}#{range.source.include?('(') ? '(' : ' '}"
+          lambda do |corrector|
+            corrector.replace(range, replacement)
+          end
         end
 
         private
 
+        def offending_range(node)
+          range_between(
+            node.children[0].loc.last_column + 1,
+            node.children[3].loc.column
+          )
+        end
+
         def message(node)
-          format(MSG, method: node.value)
+          format(MSG, method: node.children[2].value)
         end
       end
     end

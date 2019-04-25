@@ -21,19 +21,18 @@ module RuboCop
         MSG = 'Use `Rails.logger` for `debug`, `info` or `warning` calls.'
 
         def_node_matcher :bad_method?, <<-PATTERN
-          (send $(const nil? :Rollbar) {:debug :info :warning} ...)
+          (send (const nil? :Rollbar) {:debug :info :warning} {str hash})
         PATTERN
 
         def on_send(node)
-          rollbar_call = bad_method?(node)
-          return unless rollbar_call
+          return unless bad_method?(node)
 
-          add_offense(rollbar_call)
+          add_offense(node, location: node.children[0].loc.expression)
         end
 
         def autocorrect(node)
           lambda do |corrector|
-            corrector.replace(node.loc.expression, 'Rails.logger')
+            corrector.replace(node.children[0].loc.expression, 'Rails.logger')
           end
         end
       end
