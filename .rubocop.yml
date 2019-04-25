@@ -18,6 +18,7 @@ Metrics/BlockLength:
     - 'Rakefile'
     - '**/*.rake'
     - 'spec/**/*.rb'
+    - 'rubocop-vendor.gemspec'
 
 Metrics/LineLength:
   Max: 120
