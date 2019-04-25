@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## master (unreleased)
 
+## 0.2.1 - 2019-04-25
+
+### Added
+
+* Spec that checks version was bumped and changelog entry is present. ([@cabello][])
+
 ## 0.2.0 - 2019-04-23
 
 ### Added
