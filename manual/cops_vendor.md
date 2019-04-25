@@ -26,7 +26,7 @@ Rollbar.error(e, "Unable to sync account", account_id: account.id)
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | 0.2.0 | -
+Enabled | Yes | Yes  | 0.2.0 | -
 
 This cop checks for `Rollbar.log` usage and suggests specialized
 method calls instead.

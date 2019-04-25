@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## master (unreleased)
 
+## 0.3.0 - 2019-04-25
+
+* More conservative detection and auto-correction for RollbarLogger. ([@cabello][])
+* Introduce auto-correction for RollbarLog. ([@cabello][])
+
 ## 0.2.1 - 2019-04-25
 
 ### Added
