@@ -56,7 +56,7 @@ RSpec.describe RuboCop::Cop::Vendor::RollbarLogger do
     expect(autocorrect_source('Rollbar.debug({foo: "bar"})')).to eq('Rails.logger.debug({foo: "bar"})')
   end
 
-  it 'autocorrect `Rollbar.debug(<hash>)` to `Rails.logger.debug`' do
+  it 'autocorrect `Rollbar.debug(<bracketless hash>)` to `Rails.logger.debug`' do
     expect(autocorrect_source('Rollbar.debug(foo: "bar")')).to eq('Rails.logger.debug(foo: "bar")')
   end
 
