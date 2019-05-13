@@ -59,7 +59,7 @@ In your `.rubocop.yml`, you may treat the Vendor cops just like any other
 cop. For example:
 
 ```yaml
-Vednor/RollbarLogger:
+Vendor/RollbarLogger:
   Exclude:
     - lib/example.rb
 ```
