@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'byebug' if RUBY_PLATFORM != 'jruby'
+require 'byebug' unless %w[jruby java].include?(RUBY_PLATFORM)
 require 'rubocop-vendor'
 require 'rubocop/rspec/support'
 
