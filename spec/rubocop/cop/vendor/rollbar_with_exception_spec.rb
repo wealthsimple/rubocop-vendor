@@ -24,6 +24,13 @@ RSpec.describe RuboCop::Cop::Vendor::RollbarWithException do
     RUBY
   end
 
+  it 'register an offense when using `Rollbar.error` with inline rescue' do
+    expect_offense(<<-RUBY.strip_indent)
+      1 / 0 rescue Rollbar.error('Unable to perform division')
+                                 ^ Send exception as first parameter when calling `error` or `critical`.
+    RUBY
+  end
+
   it 'does not register an offense when using `Rollbar.error` with exception' do
     expect_no_offenses(<<-RUBY.strip_indent)
       begin

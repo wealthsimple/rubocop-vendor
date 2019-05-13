@@ -1,5 +1,33 @@
 # Vendor
 
+## Vendor/RollbarInsideRescue
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop checks for Rollbar calls outside `rescue` blocks.
+
+The main reason for this suggestion is that Rollbar should not be used
+as a logger given it has a quota that is often multiple times smaller
+than the log quota. By reporting errors outside rescue blocks
+the developer is most likely in control of the exceptional flow and
+won't need a stack trace.
+
+### Examples
+
+```ruby
+# bad
+Rollbar.error("Unable to sync account")
+
+# good
+begin
+  1 / 0
+rescue StandardError => exception
+  Rollbar.error(exception, "Unable to sync account")
+end
+```
+
 ## Vendor/RollbarInterpolation
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
