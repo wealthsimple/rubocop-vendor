@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
   }
 
   s.add_runtime_dependency('rubocop', '>= 0.53.0')
-  s.add_development_dependency('byebug')
   s.add_development_dependency('git')
   s.add_development_dependency('keepachangelog')
   s.add_development_dependency('simplecov')

@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gemspec
 
+gem 'byebug', platform: :mri
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', github: 'rubocop-hq/rubocop'
