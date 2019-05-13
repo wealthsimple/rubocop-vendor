@@ -1,6 +1,7 @@
 <!-- START_COP_LIST -->
 #### Department [Vendor](cops_vendor.md)
 
+* [Vendor/RollbarInsideRescue](cops_vendor.md#vendorrollbarinsiderescue)
 * [Vendor/RollbarInterpolation](cops_vendor.md#vendorrollbarinterpolation)
 * [Vendor/RollbarLog](cops_vendor.md#vendorrollbarlog)
 * [Vendor/RollbarLogger](cops_vendor.md#vendorrollbarlogger)

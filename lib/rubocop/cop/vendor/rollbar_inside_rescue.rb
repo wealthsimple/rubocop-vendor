@@ -16,6 +16,8 @@ module RuboCop
       #   Rollbar.error("Unable to sync account")
       #
       #   # good
+      #   begin
+      #     1 / 0
       #   rescue StandardError => exception
       #     Rollbar.error(exception, "Unable to sync account")
       #   end
