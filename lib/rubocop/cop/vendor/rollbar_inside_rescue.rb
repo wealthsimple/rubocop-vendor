@@ -33,14 +33,14 @@ module RuboCop
         def on_send(node)
           return unless rollbar?(node)
 
-          parent = node.parent
-          until parent.nil?
-            return if parent.rescue_type?
+          current_node = node.parent
+          until current_node.nil?
+            return if current_node.rescue_type?
 
-            break if parent.def_type?
-            break if parent.class_type?
+            break if current_node.def_type?
+            break if current_node.class_type?
 
-            parent = parent.parent
+            current_node = current_node.parent
           end
 
           add_offense(node, location: node.children[0].loc.expression)
