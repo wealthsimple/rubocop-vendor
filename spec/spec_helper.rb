@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'byebug'
 require 'rubocop-vendor'
 require 'rubocop/rspec/support'
 
