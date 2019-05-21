@@ -45,9 +45,17 @@ RSpec.describe RuboCop::Cop::Vendor::RollbarInsideRescue do
     RUBY
   end
 
-  it 'does not register an offense when using `Rollbar.error with inline rescue' do
+  it 'does not register an offense when using `Rollbar.error` with inline rescue' do
     expect_no_offenses(<<-RUBY.strip_indent)
       1 / 0 rescue Rollbar.debug('Unable to perform division')
+    RUBY
+  end
+
+  it 'does not register offense when using `Rollbar.error` with ActiveSupport::Rescuable#rescue_from' do
+    expect_no_offenses(<<-RUBY.strip_indent)
+      rescue_from InvalidRecord do |e|
+        Rollbar.error(e)
+      end
     RUBY
   end
 end

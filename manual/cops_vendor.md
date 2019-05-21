@@ -26,6 +26,13 @@ begin
 rescue StandardError => exception
   Rollbar.error(exception, "Unable to sync account")
 end
+
+# good
+class ApplicationController < ActionController::Base
+  rescue_from InvalidRecord do |e|
+    Rollbar.error(e)
+  end
+end
 ```
 
 ## Vendor/RollbarInterpolation
