@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## master (unreleased)
 
+## 0.5.0 - 2019-05-13
+
+* `RollbarInsideRescue` accepts `ActiveSupport::Rescuable#rescue_from` as a valid rescue block. ([@marcotc][])
+
 ## 0.4.0 - 2019-05-13
 
 * Fix #6: Introduce `Vendor/RollbarInsideRescue`. ([@cabello][])
@@ -37,3 +41,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Introduce `Vendor/RollbarWithException` cop. ([@cabello][])
 
 [@cabello]: https://github.com/cabello
+[@marcotc]: https://github.com/marcotc
