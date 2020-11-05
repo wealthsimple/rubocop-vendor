@@ -52,18 +52,23 @@ workflows:
   build:
     jobs:
       - rake_default:
+          context: wealthsimple
           name: Ruby 2.4
           image: circleci/ruby:2.4
       - rake_default:
+          context: wealthsimple
           name: Ruby 2.5
           image: circleci/ruby:2.5
       - rake_default:
+          context: wealthsimple
           name: Ruby 2.6
           image: circleci/ruby:2.6
       - rake_default:
+          context: wealthsimple
           name: Ruby HEAD
           image: rubocophq/circleci-ruby-snapshot:latest # Nightly snapshot build
       - rake_default:
+          context: wealthsimple
           name: JRuby 9.2
           image: circleci/jruby:9.2
       - release:
@@ -72,7 +77,7 @@ workflows:
             branches:
               only: master
           requires:
-          - Ruby 2.4
-          - Ruby 2.5
-          - Ruby 2.6
+            - Ruby 2.4
+            - Ruby 2.5
+            - Ruby 2.6
 
