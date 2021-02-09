@@ -1,0 +1,12 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rubocop-vendor
+  description: An extension of RuboCop focused on vendor integration checks
+  tags:
+    - ruby
+    - open-source
+spec:
+  type: library
+  lifecycle: production
