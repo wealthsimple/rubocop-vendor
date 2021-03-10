@@ -14,7 +14,6 @@ jobs:
       # configure test-queue.
       # See https://github.com/tmm1/test-queue#environment-variables
       TEST_QUEUE_WORKERS: 2
-      JRUBY_OPTS: "--dev -J-Xmx1000M"
     steps:
       - checkout
       - run: bundle install
@@ -25,7 +24,7 @@ jobs:
       image:
         description: "Name of the Docker image."
         type: string
-        default: "circleci/ruby:2.4"
+        default: "circleci/ruby:2.7"
     docker:
       - image: << parameters.image >>
     environment:
@@ -52,27 +51,21 @@ workflows:
   build:
     jobs:
       - rake_default:
-          name: Ruby 2.4
-          image: circleci/ruby:2.4
-      - rake_default:
-          name: Ruby 2.5
-          image: circleci/ruby:2.5
-      - rake_default:
           name: Ruby 2.6
           image: circleci/ruby:2.6
       - rake_default:
+          name: Ruby 2.7
+          image: circleci/ruby:2.7
+      - rake_default:
+          name: Ruby 3.0
+          image: circleci/ruby:3.0
+      - rake_default:
           name: Ruby HEAD
           image: rubocophq/circleci-ruby-snapshot:latest # Nightly snapshot build
-      - rake_default:
-          name: JRuby 9.2
-          image: circleci/jruby:9.2
       - release:
           context: wealthsimple
           filters:
             branches:
               only: master
           requires:
-          - Ruby 2.4
-          - Ruby 2.5
-          - Ruby 2.6
-
+            - Ruby 2.7
