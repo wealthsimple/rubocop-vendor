@@ -52,7 +52,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       config.fetch('VersionAdded', '-'),
       config.fetch('VersionChanged', '-')
     ]]
-    to_table(header, content) + "\n"
+    "#{to_table(header, content)}\n"
   end
   # rubocop:enable Metrics/MethodLength
 
@@ -79,7 +79,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   def code_example(ruby_code)
     content = "```ruby\n".dup
     content << ruby_code.text
-               .gsub('@good', '# good').gsub('@bad', '# bad').strip
+                        .gsub('@good', '# good').gsub('@bad', '# bad').strip
     content << "\n```\n"
     content
   end
@@ -131,7 +131,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       Array.new(header.size, '---').join(' | ')
     ]
     table.concat(content.map { |c| c.join(' | ') })
-    table.join("\n") + "\n"
+    "#{table.join("\n")}\n"
   end
 
   def format_table_value(val)
@@ -173,7 +173,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     file_name = "#{Dir.pwd}/manual/cops_#{department.downcase}.md"
     File.open(file_name, 'w') do |file|
       puts "* generated #{file_name}"
-      file.write(content.strip + "\n")
+      file.write("#{content.strip}\n")
     end
   end
 

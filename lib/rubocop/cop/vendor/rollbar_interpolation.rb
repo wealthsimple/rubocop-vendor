@@ -19,6 +19,7 @@ module RuboCop
       class RollbarInterpolation < Cop
         MSG = 'Send extra fields as hash parameter instead of interpolated message.'
 
+        # @!method bad_method?(node)
         def_node_matcher :bad_method?, <<-PATTERN
           (send
             (const nil? :Rollbar) {:error :critical}

@@ -20,6 +20,7 @@ module RuboCop
 
         MSG = 'Use `Rollbar.%<method>s` instead of `Rollbar.log`.'
 
+        # @!method bad_method?(node)
         def_node_matcher :bad_method?, <<-PATTERN
           (send
             (const nil? :Rollbar) :log

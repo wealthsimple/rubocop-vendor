@@ -32,11 +32,13 @@ module RuboCop
       class RollbarInsideRescue < Cop
         MSG = 'Only call Rollbar when handling errors inside a `rescue` block.'
 
+        # @!method rollbar?(node)
         def_node_matcher :rollbar?, <<-PATTERN
           (send
             (const nil? :Rollbar) {:log :debug :info :warning :error :critical} ...)
         PATTERN
 
+        # @!method active_support_rescuable_block?(node)
         def_node_matcher :active_support_rescuable_block?, <<-PATTERN
           (block
             (send nil? :rescue_from ...) ...)

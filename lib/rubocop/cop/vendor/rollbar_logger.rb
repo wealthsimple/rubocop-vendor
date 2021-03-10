@@ -20,6 +20,7 @@ module RuboCop
       class RollbarLogger < Cop
         MSG = 'Use `Rails.logger` for `debug`, `info` or `warning` calls.'
 
+        # @!method bad_method?(node)
         def_node_matcher :bad_method?, <<-PATTERN
           (send (const nil? :Rollbar) {:debug :info :warning} {str hash})
         PATTERN

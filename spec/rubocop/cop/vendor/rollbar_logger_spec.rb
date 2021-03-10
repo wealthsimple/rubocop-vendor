@@ -1,45 +1,41 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::RollbarLogger do
-  subject(:cop) { described_class.new(config) }
-
-  let(:config) { RuboCop::Config.new }
-
+RSpec.describe RuboCop::Cop::Vendor::RollbarLogger, :config, :config do
   it 'registers an offense when using `Rollbar.debug`' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       Rollbar.debug('Stale message')
       ^^^^^^^ Use `Rails.logger` for `debug`, `info` or `warning` calls.
     RUBY
   end
 
   it 'registers an offense when using `Rollbar.info`' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       Rollbar.info 'Stale message'
       ^^^^^^^ Use `Rails.logger` for `debug`, `info` or `warning` calls.
     RUBY
   end
 
   it 'registers an offense when using `Rollbar.warning`' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       Rollbar.warning 'Low resources'
       ^^^^^^^ Use `Rails.logger` for `debug`, `info` or `warning` calls.
     RUBY
   end
 
   it 'does not register an offense when using multiple parameters' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       Rollbar.warning(exception, 'Inconsistency detected.')
     RUBY
   end
 
   it 'does not register an offense when using `Rails.logger.debug`' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       Rails.logger.debug('Stale message')
     RUBY
   end
 
   it 'does not register an offense when using `Rails.logger.info`' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       Rails.logger.info('Stale message')
     RUBY
   end

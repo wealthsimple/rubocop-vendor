@@ -24,6 +24,7 @@ module RuboCop
 
         MSG = 'Send exception as first parameter when calling `error` or `critical`.'
 
+        # @!method bad_method?(node)
         def_node_matcher :bad_method?, <<-PATTERN
           (send
             (const nil? :Rollbar) {:error :critical}

@@ -7,38 +7,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## master (unreleased)
 
+## 0.6.0 - 2021-03-10
+
+- Fix specs, make them work with latest Rubocop rules. ([@cabello][])
+
 ## 0.5.0 - 2019-05-13
 
-* `RollbarInsideRescue` accepts `ActiveSupport::Rescuable#rescue_from` as a valid rescue block. ([@marcotc][])
+- `RollbarInsideRescue` accepts `ActiveSupport::Rescuable#rescue_from` as a valid rescue block. ([@marcotc][])
 
 ## 0.4.0 - 2019-05-13
 
-* Fix #6: Introduce `Vendor/RollbarInsideRescue`. ([@cabello][])
+- Fix #6: Introduce `Vendor/RollbarInsideRescue`. ([@cabello][])
 
 ## 0.3.0 - 2019-04-25
 
-* More conservative detection and auto-correction for RollbarLogger. ([@cabello][])
-* Introduce auto-correction for RollbarLog. ([@cabello][])
+- More conservative detection and auto-correction for RollbarLogger. ([@cabello][])
+- Introduce auto-correction for RollbarLog. ([@cabello][])
 
 ## 0.2.1 - 2019-04-25
 
 ### Added
 
-* Spec that checks version was bumped and changelog entry is present. ([@cabello][])
+- Spec that checks version was bumped and changelog entry is present. ([@cabello][])
 
 ## 0.2.0 - 2019-04-23
 
 ### Added
 
-* Introduce `Vendor/RollbarLog` cop. ([@cabello][])
+- Introduce `Vendor/RollbarLog` cop. ([@cabello][])
 
 ## 0.1.0 - 2019-04-23
 
 ### Added
 
-* Introduce `Vendor/RollbarInterpolation` cop. ([@cabello][])
-* Introduce `Vendor/RollbarLogger` cop. ([@cabello][])
-* Introduce `Vendor/RollbarWithException` cop. ([@cabello][])
+- Introduce `Vendor/RollbarInterpolation` cop. ([@cabello][])
+- Introduce `Vendor/RollbarLogger` cop. ([@cabello][])
+- Introduce `Vendor/RollbarWithException` cop. ([@cabello][])
 
 [@cabello]: https://github.com/cabello
 [@marcotc]: https://github.com/marcotc

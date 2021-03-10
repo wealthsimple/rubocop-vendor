@@ -7,25 +7,30 @@ require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: enable
+  SuggestExtensions: false
   Exclude:
-    - 'vendor/**/*'
-    - 'spec/fixtures/**/*'
-    - 'tmp/**/*'
+    - "vendor/**/*"
+    - "spec/fixtures/**/*"
+    - "tmp/**/*"
   TargetRubyVersion: 2.4
 
 Metrics/BlockLength:
   Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-    - 'spec/**/*.rb'
-    - 'rubocop-vendor.gemspec'
+    - "Rakefile"
+    - "**/*.rake"
+    - "spec/**/*.rb"
+    - "rubocop-vendor.gemspec"
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Naming/FileName:
   Exclude:
     - lib/rubocop-vendor.rb
+
+RSpec/FactoryBot/CreateList:
+  Enabled: false
 
 RSpec/NestedGroups:
   Max: 7
