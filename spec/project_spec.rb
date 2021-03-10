@@ -19,7 +19,7 @@ RSpec.describe 'RuboCop Vendor Project', type: :feature do
     end
 
     it 'has either entries, headers, or empty lines' do
-      expect(non_reference_lines).to all(match(/^(\*|#|$)/))
+      expect(non_reference_lines).to all(match(/^(-|#|$)/))
     end
 
     it 'has link definitions for all implicit links' do
