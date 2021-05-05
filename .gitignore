@@ -13,9 +13,6 @@ doc
 .bundle
 Gemfile.local
 
-# rbenv
-.ruby-version
-
 # rspec
 /spec/examples.txt
 /.test_queue_stats

@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated dependencies
 - Migrate CI from CircleCI to GitHub Actions
 - Change default GitHub branch to `main`
-- Bump required ruby version to 2.5
+- Bump required ruby version to 2.7
 
 ## 0.6.0 - 2021-03-10
 
