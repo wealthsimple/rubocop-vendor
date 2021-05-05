@@ -1,7 +1,7 @@
-# RuboCop Vendor
+# rubocop-vendor
 
 [![Gem Version](https://badge.fury.io/rb/rubocop-vendor.svg)](https://badge.fury.io/rb/rubocop-vendor)
-[![CircleCI](https://circleci.com/gh/wealthsimple/rubocop-vendor.svg?style=svg)](https://circleci.com/gh/wealthsimple/rubocop-vendor)
+[![GitHub Actions Badge](https://github.com/wealthsimple/rubocop-vendor/actions/workflows/main.yml/badge.svg)](https://github.com/wealthsimple/rubocop-vendor/actions)
 
 Vendor integration analysis for your projects, as an extension to [RuboCop](https://github.com/rubocop-hq/rubocop).
 

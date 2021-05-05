@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.name = 'rubocop-vendor'
   s.version = RuboCop::Vendor::Version::STRING
   s.platform = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.4'
+  s.required_ruby_version = '>= 2.5'
   s.authors = ['Danilo Cabello', 'Marco Costa', 'Osman Currim']
   s.description = <<-DESCRIPTION
     A collection of RuboCop cops to check for vendor integration
