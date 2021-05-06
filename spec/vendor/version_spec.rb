@@ -18,17 +18,17 @@ RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
 
   let(:git) { Git.open('.') }
   let(:head_version) { get_version(git, 'HEAD') }
-  let(:master_version) { get_version(git, 'origin/master') }
+  let(:main_version) { get_version(git, 'origin/main') }
 
   it 'has a version number' do
     expect(head_version).not_to be_nil
   end
 
   it 'has a bumped version committed' do
-    is_master_branch = git.current_branch == 'master' || master_version.nil?
-    skip('already on master branch, no need to compare versions') if is_master_branch
+    is_main_branch = git.current_branch == 'main' || main_version.nil?
+    skip('already on main branch, no need to compare versions') if is_main_branch
 
-    expect(Gem::Version.new(head_version)).to be > Gem::Version.new(master_version)
+    expect(Gem::Version.new(head_version)).to be > Gem::Version.new(main_version)
   end
 
   it 'has a CHANGELOG.md file' do

@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.metadata = {
     'homepage_uri' => 'https://rubocop-vendor.readthedocs.io/',
-    'changelog_uri' => 'https://github.com/wealthsimple/rubocop-vendor/blob/master/CHANGELOG.md',
+    'changelog_uri' => 'https://github.com/wealthsimple/rubocop-vendor/blob/main/CHANGELOG.md',
     'source_code_uri' => 'https://github.com/wealthsimple/rubocop-vendor/',
     'documentation_uri' => 'https://rubocop-vendor.readthedocs.io/',
     'bug_tracker_uri' => 'https://github.com/wealthsimple/rubocop-vendor/issues'

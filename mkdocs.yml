@@ -1,6 +1,6 @@
 site_name: "RuboCop Vendor: Vendor integration analysis for your projects"
 repo_url: https://github.com/wealthsimple/rubocop-vendor
-edit_uri: edit/master/manual/
+edit_uri: edit/main/manual/
 copyright: "Copyright &copy; 2019 RuboCop contributors"
 docs_dir: manual
 pages:
