@@ -11,11 +11,7 @@ doc
 
 # bundler
 .bundle
-Gemfile.lock
 Gemfile.local
-
-# rbenv
-.ruby-version
 
 # rspec
 /spec/examples.txt

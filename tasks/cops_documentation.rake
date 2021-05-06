@@ -204,7 +204,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     end
     return if selected_cops.empty?
 
-    type_title = department[0].upcase + department[1..-1]
+    type_title = department[0].upcase + department[1..]
     filename = "cops_#{department.downcase}.md"
     content = "#### Department [#{type_title}](#{filename})\n\n".dup
     selected_cops.each do |cop|
@@ -277,17 +277,15 @@ task documentation_syntax_check: :yard_for_generate_documentation do
     end
 
     examples.to_a.each do |example|
-      begin
-        buffer = Parser::Source::Buffer.new('<code>', 1)
-        buffer.source = example.text
-        parser = Parser::Ruby25.new(RuboCop::AST::Builder.new)
-        parser.diagnostics.all_errors_are_fatal = true
-        parser.parse(buffer)
-      rescue Parser::SyntaxError => e
-        path = example.object.file
-        puts "#{path}: Syntax Error in an example. #{e}"
-        ok = false
-      end
+      buffer = Parser::Source::Buffer.new('<code>', 1)
+      buffer.source = example.text
+      parser = Parser::Ruby25.new(RuboCop::AST::Builder.new)
+      parser.diagnostics.all_errors_are_fatal = true
+      parser.parse(buffer)
+    rescue Parser::SyntaxError => e
+      path = example.object.file
+      puts "#{path}: Syntax Error in an example. #{e}"
+      ok = false
     end
   end
   abort unless ok

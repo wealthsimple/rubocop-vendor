@@ -11,7 +11,7 @@ RSpec.describe 'RuboCop Vendor Project', type: :feature do
     let(:explanation_lines) { 6 }
 
     let(:non_reference_lines) do
-      lines.take_while { |line| !line.start_with?('[@') }[explanation_lines..-1]
+      lines.take_while { |line| !line.start_with?('[@') }[explanation_lines..]
     end
 
     it 'has newline at end of file' do

@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.name = 'rubocop-vendor'
   s.version = RuboCop::Vendor::Version::STRING
   s.platform = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.4'
+  s.required_ruby_version = '>= 2.7'
   s.authors = ['Danilo Cabello', 'Marco Costa', 'Osman Currim']
   s.description = <<-DESCRIPTION
     A collection of RuboCop cops to check for vendor integration
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.metadata = {
     'homepage_uri' => 'https://rubocop-vendor.readthedocs.io/',
-    'changelog_uri' => 'https://github.com/wealthsimple/rubocop-vendor/blob/master/CHANGELOG.md',
+    'changelog_uri' => 'https://github.com/wealthsimple/rubocop-vendor/blob/main/CHANGELOG.md',
     'source_code_uri' => 'https://github.com/wealthsimple/rubocop-vendor/',
     'documentation_uri' => 'https://rubocop-vendor.readthedocs.io/',
     'bug_tracker_uri' => 'https://github.com/wealthsimple/rubocop-vendor/issues'
