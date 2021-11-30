@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-vendor (0.7.0)
+    rubocop-vendor (0.7.1)
       rubocop (>= 0.53.0)
 
 GEM
@@ -71,8 +71,8 @@ DEPENDENCIES
   keepachangelog
   rake
   rspec
-  rubocop
-  rubocop-rspec
+  rubocop (~> 1.23.0)
+  rubocop-rspec (~> 2.6.0)
   rubocop-vendor!
   simplecov
   yard (~> 0.9)
