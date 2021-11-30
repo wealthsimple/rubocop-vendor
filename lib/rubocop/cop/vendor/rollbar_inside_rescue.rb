@@ -29,7 +29,7 @@ module RuboCop
       #     end
       #   end
       #
-      class RollbarInsideRescue < Cop
+      class RollbarInsideRescue < Base
         MSG = 'Only call Rollbar when handling errors inside a `rescue` block.'
 
         # @!method rollbar?(node)

@@ -26,7 +26,8 @@ Gem::Specification.new do |s|
     'changelog_uri' => 'https://github.com/wealthsimple/rubocop-vendor/blob/main/CHANGELOG.md',
     'source_code_uri' => 'https://github.com/wealthsimple/rubocop-vendor/',
     'documentation_uri' => 'https://rubocop-vendor.readthedocs.io/',
-    'bug_tracker_uri' => 'https://github.com/wealthsimple/rubocop-vendor/issues'
+    'bug_tracker_uri' => 'https://github.com/wealthsimple/rubocop-vendor/issues',
+    'rubygems_mfa_required' => 'true'
   }
 
   s.add_runtime_dependency('rubocop', '>= 0.53.0')

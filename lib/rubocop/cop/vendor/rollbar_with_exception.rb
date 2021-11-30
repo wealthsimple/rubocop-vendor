@@ -19,7 +19,7 @@ module RuboCop
       #   # good
       #   Rollbar.error(exception, "Unable to sync account")
       #
-      class RollbarWithException < Cop
+      class RollbarWithException < Base
         include RangeHelp
 
         MSG = 'Send exception as first parameter when calling `error` or `critical`.'

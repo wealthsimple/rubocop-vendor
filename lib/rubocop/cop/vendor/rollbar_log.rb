@@ -15,7 +15,7 @@ module RuboCop
       #   # good
       #   Rollbar.info('Stale message')
       #
-      class RollbarLog < Cop
+      class RollbarLog < Base
         include RangeHelp
 
         MSG = 'Use `Rollbar.%<method>s` instead of `Rollbar.log`.'

@@ -17,7 +17,7 @@ module RuboCop
       #   # good
       #   Rails.logger.info("Stale message")
       #
-      class RollbarLogger < Cop
+      class RollbarLogger < Base
         MSG = 'Use `Rails.logger` for `debug`, `info` or `warning` calls.'
 
         # @!method bad_method?(node)
