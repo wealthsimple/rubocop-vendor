@@ -17,6 +17,7 @@ module RuboCop
       #
       class RollbarLog < Base
         include RangeHelp
+        extend AutoCorrector
 
         MSG = 'Use `Rollbar.%<method>s` instead of `Rollbar.log`.'
 
@@ -30,13 +31,11 @@ module RuboCop
         def on_send(node)
           return unless bad_method?(node)
 
-          add_offense(node, location: offending_range(node))
-        end
-
-        def autocorrect(node)
           range = offending_range(node)
-          replacement = "#{node.children[2].value}#{range.source.include?('(') ? '(' : ' '}"
-          lambda do |corrector|
+          method = node.children[2].value
+
+          add_offense(range, message: format(MSG, method: method)) do |corrector|
+            replacement = "#{method}#{range.source.include?('(') ? '(' : ' '}"
             corrector.replace(range, replacement)
           end
         end
@@ -48,10 +47,6 @@ module RuboCop
             node.children[0].loc.last_column + 1,
             node.children[3].loc.column
           )
-        end
-
-        def message(node)
-          format(MSG, method: node.children[2].value)
         end
       end
     end

@@ -37,7 +37,8 @@ module RuboCop
           return unless first_param
 
           begin_pos = first_param.loc.expression.begin.begin_pos
-          add_offense(first_param, location: range_between(begin_pos, begin_pos + 1))
+
+          add_offense(range_between(begin_pos, begin_pos + 1))
         end
       end
     end

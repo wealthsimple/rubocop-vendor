@@ -48,7 +48,7 @@ module RuboCop
           return unless rollbar?(node)
           return if in_rescue_block?(node)
 
-          add_offense(node, location: node.children[0].loc.expression)
+          add_offense(node.children[0].loc.expression)
         end
 
         def in_rescue_block?(node)

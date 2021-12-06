@@ -18,6 +18,8 @@ module RuboCop
       #   Rails.logger.info("Stale message")
       #
       class RollbarLogger < Base
+        extend AutoCorrector
+
         MSG = 'Use `Rails.logger` for `debug`, `info` or `warning` calls.'
 
         # @!method bad_method?(node)
@@ -28,12 +30,10 @@ module RuboCop
         def on_send(node)
           return unless bad_method?(node)
 
-          add_offense(node, location: node.children[0].loc.expression)
-        end
+          offending_node = node.children.first
 
-        def autocorrect(node)
-          lambda do |corrector|
-            corrector.replace(node.children[0].loc.expression, 'Rails.logger')
+          add_offense(offending_node) do |corrector|
+            corrector.replace(offending_node.loc.expression, 'Rails.logger')
           end
         end
       end
