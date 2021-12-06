@@ -17,7 +17,7 @@ RSpec.describe RuboCop::Cop::Vendor::RecursiveOpenStructGem, :config do
     it 'registerers an offese' do
       expect_offense(<<~RUBY)
         gem 'recursive-open-struct'
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not use the recursive-open-struct gem. RecrusiveOpenStruct inherits from OpenStruct, which is now officially discouraged from usage due to performance, version compatibility, and security issues.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not use the recursive-open-struct gem. RecursiveOpenStruct inherits from OpenStruct, which is now officially discouraged from usage due to performance, version compatibility, and security issues.
       RUBY
     end
   end
