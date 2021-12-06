@@ -42,3 +42,9 @@ Style/Documentation:
 Style/NumericPredicate:
   Exclude:
     - tasks/cops_documentation.rake
+
+Style/FormatStringToken:
+  # Because we parse a lot of source codes from strings. Percent arrays
+  # look like unannotated format string tokens to this cop.
+  Exclude:
+    - spec/**/*
