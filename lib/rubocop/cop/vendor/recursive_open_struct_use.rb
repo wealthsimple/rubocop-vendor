@@ -6,7 +6,7 @@ module RuboCop
       # This cop flags uses of RecursiveOpenStruct. RecursiveOpenStruct is a library used in the
       # Wealthsimple ecosystem that is being phased out due to security issues.
       #
-      # RecrusiveOpenStruct inherits from OpenStruct, which is now officially discouraged to be used
+      # RecursiveOpenStruct inherits from OpenStruct, which is now officially discouraged to be used
       # for performance, version compatibility, and security issues.
       #
       # @safety
