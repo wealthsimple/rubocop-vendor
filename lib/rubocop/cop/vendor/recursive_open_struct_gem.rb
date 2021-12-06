@@ -11,7 +11,7 @@ module RuboCop
       # https://ruby-doc.org/stdlib-3.0.1/libdoc/ostruct/rdoc/OpenStruct.html#class-OpenStruct-label-Caveats
       class RecursiveOpenStructGem < Base
         MSG = <<~MSG.strip
-          Do not use the recursive-open-struct gem. RecrusiveOpenStruct inherits from OpenStruct, which is now officially discouraged from usage due to performance, version compatibility, and security issues.
+          Do not use the recursive-open-struct gem. RecursiveOpenStruct inherits from OpenStruct, which is now officially discouraged from usage due to performance, version compatibility, and security issues.
         MSG
 
         def on_new_investigation
