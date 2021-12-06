@@ -5,7 +5,7 @@ module RuboCop
     module Vendor
       # This cop flags uses of the recursive-open-struct gem.
       #
-      # RecrusiveOpenStruct inherits from OpenStruct, which is now officially discouraged to be used
+      # RecursiveOpenStruct inherits from OpenStruct, which is now officially discouraged to be used
       # for performance, version compatibility, and security issues.
       #
       # https://ruby-doc.org/stdlib-3.0.1/libdoc/ostruct/rdoc/OpenStruct.html#class-OpenStruct-label-Caveats
