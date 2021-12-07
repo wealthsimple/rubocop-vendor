@@ -19,7 +19,7 @@ module RuboCop
       #   # good
       #   Rollbar.error(exception, "Unable to sync account")
       #
-      class RollbarWithException < Cop
+      class RollbarWithException < Base
         include RangeHelp
 
         MSG = 'Send exception as first parameter when calling `error` or `critical`.'
@@ -37,7 +37,8 @@ module RuboCop
           return unless first_param
 
           begin_pos = first_param.loc.expression.begin.begin_pos
-          add_offense(first_param, location: range_between(begin_pos, begin_pos + 1))
+
+          add_offense(range_between(begin_pos, begin_pos + 1))
         end
       end
     end

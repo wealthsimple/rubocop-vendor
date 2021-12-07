@@ -44,7 +44,7 @@ module RuboCop
       #   test_double = double
       #   allow(test_double).to receive(:a).and_return('b')
       #
-      class RecursiveOpenStructUse < Cop
+      class RecursiveOpenStructUse < Base
         MSG = <<~MSG.strip
           Avoid using `RecursiveOpenStruct`; use `Struct`, `Hash`, a class or test doubles instead.
         MSG

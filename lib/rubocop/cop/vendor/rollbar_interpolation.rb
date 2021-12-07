@@ -16,7 +16,7 @@ module RuboCop
       #   # good
       #   Rollbar.error(e, "Unable to sync account", account_id: account.id)
       #
-      class RollbarInterpolation < Cop
+      class RollbarInterpolation < Base
         MSG = 'Send extra fields as hash parameter instead of interpolated message.'
 
         # @!method bad_method?(node)
