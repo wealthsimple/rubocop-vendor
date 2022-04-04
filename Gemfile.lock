@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-vendor (0.8.4)
+    rubocop-vendor (0.8.5)
       rubocop (>= 0.53.0)
 
 GEM
@@ -80,4 +80,4 @@ DEPENDENCIES
   yard (~> 0.9)
 
 BUNDLED WITH
-   2.2.33
+   2.3.10
