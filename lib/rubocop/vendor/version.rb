@@ -3,7 +3,7 @@
 module RuboCop
   module Vendor
     module Version
-      STRING = '0.8.5'
+      STRING = '0.8.6'
     end
   end
 end
