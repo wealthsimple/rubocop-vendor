@@ -5,7 +5,7 @@ require 'rubocop/vendor/version'
 
 Gem::Specification.new do |s|
   s.name = 'rubocop-vendor'
-  s.version = RuboCop::Vendor::Version::STRING
+  s.version = RuboCop::Vendor::VERSION
   s.platform = Gem::Platform::RUBY
   s.required_ruby_version = '>= 2.7'
   s.authors = ['Danilo Cabello', 'Marco Costa', 'Osman Currim']
