@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-vendor (0.8.10)
+    rubocop-vendor (0.8.11)
       rubocop (>= 0.53.0)
 
 GEM
@@ -16,13 +16,12 @@ GEM
     git (1.13.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
-    json (2.6.3)
-    keepachangelog (0.6.1)
-      json (~> 2.1)
-      thor (~> 0.20)
     parallel (1.22.1)
+    parse_a_changelog (1.2.0)
+      treetop (~> 1.6)
     parser (3.2.0.0)
       ast (~> 2.4.1)
+    polyglot (0.3.5)
     public_suffix (5.0.1)
     rainbow (3.1.1)
     rake (13.0.6)
@@ -62,7 +61,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    thor (0.20.3)
+    treetop (1.6.12)
+      polyglot (~> 0.3)
     unicode-display_width (2.4.2)
     webrick (1.7.0)
     yard (0.9.28)
@@ -74,7 +74,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   git
-  keepachangelog
+  parse_a_changelog
   rake
   rspec
   rubocop (~> 1.23.0)

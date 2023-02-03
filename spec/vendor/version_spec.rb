@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'git'
-require 'keepachangelog'
+require 'parse_a_changelog'
 
 RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
   def get_version(git, branch = 'HEAD')
@@ -77,8 +77,8 @@ RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
   end
 
   it 'has changelog entry for current version' do
-    parser = Keepachangelog::MarkdownParser.load('CHANGELOG.md')
-
-    expect(parser.parsed_content['versions'].keys).to include(start_with(head_version))
+    parser = ParseAChangelog.parse('CHANGELOG.md')
+    versions = parser.elements[2].elements.map { |element| element.elements[1].text_value }
+    expect(versions.first).to include(head_version)
   end
 end

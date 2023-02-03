@@ -1,9 +1,15 @@
 # Changelog
-
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## 0.8.11 - 2023-02-03
+### Changed
+- Upgraded to ruby
+- Replaced keep-a-changelog with parse-a-changelog for dependency updates
 
 ## 0.8.10 - 2022-05-16
 ### Changed
@@ -66,41 +72,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump required ruby version to 2.7
 
 ## 0.6.0 - 2021-03-10
-
+### Changed
 - Fix specs, make them work with latest Rubocop rules. ([@cabello][])
 
 ## 0.5.0 - 2019-05-13
-
+### Changed
 - `RollbarInsideRescue` accepts `ActiveSupport::Rescuable#rescue_from` as a valid rescue block. ([@marcotc][])
 
 ## 0.4.0 - 2019-05-13
-
+### Changed
 - Fix #6: Introduce `Vendor/RollbarInsideRescue`. ([@cabello][])
 
 ## 0.3.0 - 2019-04-25
-
+### Changed
 - More conservative detection and auto-correction for RollbarLogger. ([@cabello][])
 - Introduce auto-correction for RollbarLog. ([@cabello][])
 
 ## 0.2.1 - 2019-04-25
-
 ### Added
-
 - Spec that checks version was bumped and changelog entry is present. ([@cabello][])
 
 ## 0.2.0 - 2019-04-23
-
 ### Added
-
 - Introduce `Vendor/RollbarLog` cop. ([@cabello][])
 
 ## 0.1.0 - 2019-04-23
-
 ### Added
-
 - Introduce `Vendor/RollbarInterpolation` cop. ([@cabello][])
 - Introduce `Vendor/RollbarLogger` cop. ([@cabello][])
 - Introduce `Vendor/RollbarWithException` cop. ([@cabello][])
-
-[@cabello]: https://github.com/cabello
-[@marcotc]: https://github.com/marcotc
+- [@cabello]: https://github.com/cabello
+- [@marcotc]: https://github.com/marcotc
