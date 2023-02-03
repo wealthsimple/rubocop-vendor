@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.8.11 - 2023-02-03
+### Changed
+- Upgraded to ruby
+- Replaced keep-a-changelog with parse-a-changelog for dependency updates
+
 ## 0.8.10 - 2022-05-16
 ### Changed
 - Updated dependencies
@@ -96,6 +101,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Introduce `Vendor/RollbarInterpolation` cop. ([@cabello][])
 - Introduce `Vendor/RollbarLogger` cop. ([@cabello][])
 - Introduce `Vendor/RollbarWithException` cop. ([@cabello][])
-
-[@cabello]: https://github.com/cabello
-[@marcotc]: https://github.com/marcotc
+- [@cabello]: https://github.com/cabello
+- [@marcotc]: https://github.com/marcotc
