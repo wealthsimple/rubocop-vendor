@@ -12,6 +12,7 @@ doc
 # bundler
 .bundle
 Gemfile.local
+vendor/bundle
 
 # rspec
 /spec/examples.txt
