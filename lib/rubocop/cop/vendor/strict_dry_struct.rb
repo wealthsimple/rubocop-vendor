@@ -6,7 +6,7 @@ module RuboCop
       # This cop flags uses of DryStruct without strict mode
       #
       # By default DryStruct will not throw an error if passed an attribute that wasn't defined.
-      # We want to enfore strict mode which will
+      # We want to enfore strict mode which will throw an error in that case.
       class StrictDryStruct < RuboCop::Cop::Base
         MSG = 'Avoid using `Dry::Struct` without schema schema.strict'
 
