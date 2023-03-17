@@ -19,4 +19,10 @@ RSpec.describe RuboCop::Cop::Vendor::StrictDryStruct, :config, :config do
       end
     RUBY
   end
+
+  it 'does not register an offense referring to Dry::Struct' do
+    expect_no_offenses(<<~RUBY)
+      expect { subject }.to raise_error Dry::Struct::Error
+    RUBY
+  end
 end

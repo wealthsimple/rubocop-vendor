@@ -22,6 +22,7 @@ module RuboCop
 
         def on_const(node)
           return unless uses_dry_struct?(node)
+          return unless node.parent.class_type?
           return if uses_strict_mode?(node.parent)
 
           add_offense(node)

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.9.1 - 2023-03-17
+### Changed
+- Fixed StrictDryStruct, it should only fail if declaring a Dry::Struct
+
 ## 0.9.0 - 2023-03-07
 ### Changed
 - Added cop to require strict schema on DryStruct
