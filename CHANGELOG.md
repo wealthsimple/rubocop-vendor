@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.9.2 - 2023-04-14
+### Changed
+- Removed support for Ruby 2
+
 ## 0.9.1 - 2023-03-17
 ### Changed
 - Fixed StrictDryStruct, it should only fail if declaring a Dry::Struct
