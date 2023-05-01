@@ -19,7 +19,7 @@ GEM
     parallel (1.23.0)
     parse_a_changelog (1.2.0)
       treetop (~> 1.6)
-    parser (3.2.2.0)
+    parser (3.2.2.1)
       ast (~> 2.4.1)
     polyglot (0.3.5)
     public_suffix (5.0.1)
