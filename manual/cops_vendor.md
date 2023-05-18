@@ -1,5 +1,51 @@
 # Vendor
 
+## Vendor/RecursiveOpenStructGem
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop flags uses of the recursive-open-struct gem.
+
+RecursiveOpenStruct inherits from OpenStruct, which is now officially discouraged to be used
+for performance, version compatibility, and security issues.
+
+https://ruby-doc.org/stdlib-3.0.1/libdoc/ostruct/rdoc/OpenStruct.html#class-OpenStruct-label-Caveats
+
+## Vendor/RecursiveOpenStructUse
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop flags uses of RecursiveOpenStruct. RecursiveOpenStruct is a library used in the
+Wealthsimple ecosystem that is being phased out due to security issues.
+
+RecursiveOpenStruct inherits from OpenStruct, which is now officially discouraged to be used
+for performance, version compatibility, and security issues.
+
+### Examples
+
+```ruby
+# bad
+point = RecursiveOpenStruct.new(x: 0, y: 1)
+
+# good
+Point = Struct.new(:x, :y)
+point = Point.new(0, 1)
+
+# also good
+point = { x: 0, y: 1 }
+
+# bad
+test_double = RecursiveOpenStruct.new(a: 'b')
+
+# good (assumes test using rspec-mocks)
+test_double = double
+allow(test_double).to receive(:a).and_return('b')
+```
+
 ## Vendor/RollbarInsideRescue
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
@@ -61,7 +107,7 @@ Rollbar.error(e, "Unable to sync account", account_id: account.id)
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | Yes  | 0.2.0 | -
+Enabled | Yes | No | 0.2.0 | -
 
 This cop checks for `Rollbar.log` usage and suggests specialized
 method calls instead.
@@ -82,7 +128,7 @@ Rollbar.info('Stale message')
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | Yes  | 0.1.0 | -
+Enabled | Yes | No | 0.1.0 | -
 
 This cop checks for non-error usage of Rollbar and suggests using
 `Rails.logger` instead.
@@ -125,3 +171,29 @@ Rollbar.error("Unable to sync account")
 # good
 Rollbar.error(exception, "Unable to sync account")
 ```
+
+## Vendor/SidekiqThrottledGem
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop flags uses of the sidekiq-throttled gem.
+
+sidekiq-throttled overrides sidekiq-pro and sidekiq-enterprise features,
+resulting in at-most once delivery of sidekiq jobs, instead of at-least once delivery
+of sidekiq jobs. This means there is a relatively good chance you will LOSE JOBS that were enqueued
+if the sidekiq-process runs out of memory or does not shutdown gracefully.
+
+https://wealthsimple.slack.com/archives/C19UB3HNZ/p1683721247371709 for more details
+
+## Vendor/StrictDryStruct
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop flags uses of DryStruct without strict mode
+
+By default DryStruct will not throw an error if passed an attribute that wasn't defined.
+We want to enfore strict mode which will throw an error in that case.
