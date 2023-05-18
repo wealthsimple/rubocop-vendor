@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.10.0 - 2023-05-18
+### Added
+- Add rule for sidekiq-throttled as it disables sidekiq-pro and sidekiq-enterprise functionality
+
 ## 0.9.2 - 2023-04-14
 ### Changed
 - Removed support for Ruby 2
