@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.11.0 - 2023-05-26
+### Added
+- Add rule for `ActiveRecord::Connection#execute` since its manually memory managed (chance of memory leak)
+
 ## 0.10.0 - 2023-05-18
 ### Added
 - Add rule for sidekiq-throttled as it disables sidekiq-pro and sidekiq-enterprise functionality
