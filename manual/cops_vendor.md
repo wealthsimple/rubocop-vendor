@@ -1,5 +1,34 @@
 # Vendor
 
+## Vendor/ActiveRecordConnectionExecute
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop checks for `ActiveRecord::Connection#execute` usage and suggests
+using non-manually memory managed objects instead.
+
+The main reason for this is this is a common way to leak memory in a Ruby on Rails application.
+see {
+https://github.com/rails/rails/blob/a19b13b61f7af612569943ec7d536185cbec875c/activerecord/lib/active_record/connection_adapters/abstract/database_statements.rb#L127
+ActiveRecord documentation
+}.
+
+### Examples
+
+```ruby
+# bad
+ActiveRecord::Base.connection.execute('SELECT * FROM users')
+ApplicationRecord.connection.execute('SELECT * FROM users')
+User.connection.execute('SELECT * FROM users')
+
+# good
+ActiveRecord::Base.connection.select_all('SELECT * FROM users')
+ApplicationRecord.connection.select_all('SELECT * FROM users')
+User.connection.select_all('SELECT * FROM users')
+```
+
 ## Vendor/RecursiveOpenStructGem
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged

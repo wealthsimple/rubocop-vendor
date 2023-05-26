@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::RollbarLog, :config, :config do
+RSpec.describe RuboCop::Cop::Vendor::RollbarLog, :config do
   it 'registers an offense when using `Rollbar.log` with string' do
     expect_offense(<<~RUBY)
       Rollbar.log('error', 'Unhandled exception')
