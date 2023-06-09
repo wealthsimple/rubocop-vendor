@@ -52,7 +52,7 @@ module RuboCop
               path.children.flat_map do |child|
                 binding.irb if child == :join
                 if child&.type == :str
-                  child.value.delete_prefix("/").split("/").map { |v| "\"#{v}\"" }
+                  child.value.delete_prefix("/").delete_suffix("/").split("/").map { |v| "\"#{v}\"" }
                 elsif child&.type == :begin # begin interpolation
                   child.children.first.source
                 elsif child&.type == :send
