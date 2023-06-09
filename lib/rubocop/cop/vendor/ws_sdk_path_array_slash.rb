@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'parser/current'
 
 module RuboCop
@@ -30,9 +31,9 @@ module RuboCop
 
         def on_send(node)
           path, = ws_sdk_service_call?(node)
-          return unless path && path.type == :array
+          return unless path&.array_type?
 
-          strings_with_slash = path.children.select { |n| n.str_type? && n.value.include?("/") }
+          strings_with_slash = path.children.select { |n| n.str_type? && n.value.include?('/') }
 
           strings_with_slash.each do |str_node|
             add_offense(str_node) do |corrector|
@@ -41,16 +42,18 @@ module RuboCop
           end
         end
 
+        private
+
         def correct_path(corrector, path)
           parts =
             path.children.flat_map do |child|
-              if child.str_type? && child.value.include?("/")
-                child.value.delete_prefix("/").delete_suffix("/").split("/").map { |v| "\"#{v}\"" }
+              if child.str_type? && child.value.include?('/')
+                child.value.delete_prefix('/').delete_suffix('/').split('/').map { |v| "\"#{v}\"" }
               else
                 [child.source]
               end
             end
-            corrector.replace(path.loc.expression, "[#{parts.join(', ')}]")
+          corrector.replace(path.loc.expression, "[#{parts.join(', ')}]")
         end
       end
     end

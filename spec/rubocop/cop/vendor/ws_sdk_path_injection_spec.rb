@@ -11,6 +11,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathInjection, :config do
       Ws::Service.delete(account_id)
                          ^^^^^^^^^^ Use of paths with interpolated values is dangerous, as path injection can occur; prefer to use array of each path component
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.delete([account_id])
     CORRECTED
@@ -21,6 +22,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathInjection, :config do
       Ws::Service.post("/api/accounts/\#{account_id}/details")
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use of paths with interpolated values is dangerous, as path injection can occur; prefer to use array of each path component
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.post(["api", "accounts", account_id, "details"])
     CORRECTED
@@ -31,6 +33,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathInjection, :config do
       Ws::Service.delete("/api/accounts/\#{account_id}")
                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use of paths with interpolated values is dangerous, as path injection can occur; prefer to use array of each path component
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.delete(["api", "accounts", account_id])
     CORRECTED
@@ -41,6 +44,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathInjection, :config do
       Ws::Service.put("/api/accounts/\#{account_id}", { body: "123" })
                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use of paths with interpolated values is dangerous, as path injection can occur; prefer to use array of each path component
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.put(["api", "accounts", account_id], { body: "123" })
     CORRECTED
@@ -51,6 +55,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathInjection, :config do
       Ws::Service.put("/api/accounts/\#{my_method(account_id.to_i)}", "123")
                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use of paths with interpolated values is dangerous, as path injection can occur; prefer to use array of each path component
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.put(["api", "accounts", my_method(account_id.to_i)], "123")
     CORRECTED

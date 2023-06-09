@@ -6,6 +6,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathArraySlash, :config do
       Ws::Service.delete(["foo/bar"])
                           ^^^^^^^^^ When switching to array arguments, you must put each path component individually
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.delete(["foo", "bar"])
     CORRECTED
@@ -17,6 +18,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathArraySlash, :config do
                         ^^^^^^^^^^^^^^^^ When switching to array arguments, you must put each path component individually
                                                       ^^^^^^^^^^ When switching to array arguments, you must put each path component individually
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.post(["api", "accounts", account_id, "details"])
     CORRECTED
@@ -27,6 +29,7 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathArraySlash, :config do
       Ws::Service.delete(['/api/accounts', account_id])
                           ^^^^^^^^^^^^^^^ When switching to array arguments, you must put each path component individually
     RUBY
+
     expect_correction(<<~CORRECTED)
       Ws::Service.delete(["api", "accounts", account_id])
     CORRECTED

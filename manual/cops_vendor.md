@@ -226,3 +226,48 @@ This cop flags uses of DryStruct without strict mode
 
 By default DryStruct will not throw an error if passed an attribute that wasn't defined.
 We want to enfore strict mode which will throw an error in that case.
+
+## Vendor/WsSdkPathArraySlash
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop checks for `Ws::Service#get,patch,post,put,delete,...` usage
+where the array format is used, but it contains (probably not) intended slashes.
+These slashes will be converted to %2f instead of a path component.
+
+### Examples
+
+```ruby
+# bad
+Ws::AccountService.post(["/test/foo"]) # forward flash will be converted to %2f
+
+# good
+Ws::AccountService.post(["test", "foo"])
+```
+
+## Vendor/WsSdkPathInjection
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | - | -
+
+This cop checks for `Ws::Service#get,patch,post,put,delete,...` usage and suggests to use component based paths
+instead of using interpolated values that could be user input.
+
+This is to avoid path injection, a potential security vulnerability!
+
+### Examples
+
+```ruby
+# bad
+# could post to /api/accounts with same credentials (e.g. by passing "?" as account_id)
+Ws::AccountService.post("/api/accounts/#{account_id}/details")
+
+# good
+Ws::AccountService.post(["api","accounts", account_id, "details"])
+
+# okay, but prefer above
+Ws::AccountService.post("/api/accounts/#{URI.encode_www_component(account_id)}")
+```

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'parser/current'
 
 module RuboCop
@@ -44,30 +45,42 @@ module RuboCop
           end
         end
 
+        def self.ws_sdk_supports_arrays?
+          version = Gem.loaded_specs['ws-sdk']&.version
+          version && version >= Gem::Version.new('13.3.0')
+        end
+
+        private
+
         def correct_path(corrector, path)
           parts =
-            if path.type == :send
+            if path.send_type?
               [path.source]
             else
-              path.children.flat_map do |child|
-                binding.irb if child == :join
-                if child&.type == :str
-                  child.value.delete_prefix("/").delete_suffix("/").split("/").map { |v| "\"#{v}\"" }
-                elsif child&.type == :begin # begin interpolation
-                  child.children.first.source
-                elsif child&.type == :send
-                  child.source
-                else
-                  return # do not know how to auto-correct
-                end
-              end
+              convert_str_path_to_source(path)
             end
+          return unless parts # conversion to parts failed, cannot auto-correct
 
           corrector.replace(path.loc.expression, "[#{parts.join(', ')}]")
         end
 
-        def self.ws_sdk_supports_arrays?
-          Gem.loaded_specs['ws-sdk'].version >= Gem::Version.new("13.3.0")
+        def convert_str_path_to_source(path)
+          path.children.flat_map do |child|
+            case child&.type
+            when :str
+              convert_str_node_to_array_source(child)
+            when :begin # begin interpolation
+              child.children.first.source
+            when :send
+              child.source
+            else
+              break # do not know how to auto-correct other types
+            end
+          end
+        end
+
+        def convert_str_node_to_array_source(node)
+          node.value.delete_prefix('/').delete_suffix('/').split('/').map { |v| "\"#{v}\"" }
         end
       end
     end
