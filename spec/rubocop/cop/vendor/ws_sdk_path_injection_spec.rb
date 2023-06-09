@@ -66,6 +66,4 @@ RSpec.describe RuboCop::Cop::Vendor::WsSdkPathInjection, :config do
       Ws::Service.post(["api", "accounts", account_id, "details"])
     RUBY
   end
-
-  # TODO: detect use of array syntax with "/" in values?
 end
