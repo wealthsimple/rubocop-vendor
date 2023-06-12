@@ -23,17 +23,6 @@ module RuboCop
           Switch to using non-its expectations (rspec-its is dead)
         STR
 
-        # @!method rspec_many_its_call?(node)
-        def_node_matcher :rspec_many_its_call?, <<-PATTERN
-          $(begin
-            ...
-            (block
-              <(send nil? :its ...) (args) ...>
-            )
-            ...
-          )
-        PATTERN
-
         # @!method rspec_its_call?(node)
         def_node_matcher :rspec_its_call?, <<-PATTERN
           (block
@@ -59,36 +48,51 @@ module RuboCop
         PATTERN
 
         # rubocop:disable Metrics/AbcSize
-        # rubocop:disable Metrics/MethodLength
         def on_begin(node)
-          begin_expr, = rspec_many_its_call?(node)
-          return unless begin_expr
+          its_calls = node.children.select { |n| rspec_its_call?(n) }
+          return if its_calls.empty?
 
-          add_offense(begin_expr) do |corrector|
-            its_calls = begin_expr.children.select { |n| rspec_its_call?(n) }
+          add_offense(node) do |corrector|
+            body_code_strs =
+              its_calls.each_with_index.map do |its_call_expr, idx|
+                its_expr, body_expr = rspec_its_call?(its_call_expr)
+                corrector.remove(its_call_expr.loc.expression) if idx != 0 # since we will replace the first one
 
-            body_code_strs = its_calls.each_with_index.filter_map do |its_call_expr, idx|
-              its_expr, body_expr = rspec_its_call?(its_call_expr)
-              corrector.remove(its_call_expr.loc.expression) if idx != 0 # since we will replace the first one
-
-              calculate_expect_str(its_expr, body_expr)
-            end
-
-            unless body_code_strs.empty?
-              body = <<-RUBY
-              aggregate_failures 'correct attributes and expecations' do
-                #{body_code_strs.join("\n  ")}
+                calculate_expect_str(its_expr, body_expr)
               end
-              RUBY
 
-              corrector.replace(its_calls.first.loc.expression, body)
-            end
+            corrector.replace(its_calls.first.loc.expression, determine_replacement(its_calls, body_code_strs))
           end
         end
-        # rubocop:enable Metrics/MethodLength
         # rubocop:enable Metrics/AbcSize
 
         private
+
+        def determine_replacement(its_calls, body_code_strs)
+          if body_code_strs.size == 1
+            its_expr, = rspec_its_call?(its_calls.first)
+            field_name = field_name_str(its_expr).gsub("\'", '')
+            <<-RUBY
+              it '#{field_name} is correct' do
+                #{body_code_strs.join("\n  ")}
+              end
+            RUBY
+          else
+            if its_calls.any? { |expr| rspec_exception_call?(expr) }
+              <<-RUBY
+                it 'has correct attributes and errors' do
+                  #{body_code_strs.join("\n  ")}
+                end
+              RUBY
+            else
+              <<-RUBY
+                it 'has correct attributes' do
+                  #{body_code_strs.join("\n  ")}
+                end
+              RUBY
+            end
+          end
+        end
 
         def calculate_expect_str(its_expr, body_expr)
           field_name = field_name_str(its_expr) ||
