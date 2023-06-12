@@ -75,22 +75,22 @@ module RuboCop
         def determine_replacement(its_calls, body_code_strs)
           if body_code_strs.size == 1
             its_expr, = rspec_its_call?(its_calls.first)
-            field_name = field_name_str(its_expr).gsub("\'", '')
+            field_name = field_name_pretty(its_expr).gsub("\'", '')
             <<-RUBY
-              it '#{field_name} is correct' do
+              it '#{field_name}' do
                 #{body_code_strs.join("\n  ")}
               end
             RUBY
           else
             if its_calls.any? { |expr| rspec_exception_call?(expr) }
               <<-RUBY
-                it 'has correct attributes and errors' do
+                it 'has attributes set and errors' do
                   #{body_code_strs.join("\n  ")}
                 end
               RUBY
             else
               <<-RUBY
-                it 'has correct attributes' do
+                it 'has attributes set' do
                   #{body_code_strs.join("\n  ")}
                 end
               RUBY
@@ -107,6 +107,14 @@ module RuboCop
             exception_call_str(body_expr, field_name) ||
             (raise ::RuboCop::Error,
                    "did not know how to auto-correct #{body_expr}, probably issue with code!\n\n#{body_expr.source}")
+        end
+
+        def field_name_pretty(its_expr)
+          if %i[sym str].include?(its_expr.type)
+            "\##{its_expr.value.to_sym}"
+          elsif its_expr.array_type?
+            "[#{its_expr.children.map(&:source).join(', ')}]"
+          end
         end
 
         def field_name_str(its_expr)
