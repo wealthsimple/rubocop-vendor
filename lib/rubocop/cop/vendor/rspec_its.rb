@@ -69,13 +69,9 @@ module RuboCop
 
             body_code_strs = its_calls.each_with_index.filter_map do |its_call_expr, idx|
               its_expr, body_expr = rspec_its_call?(its_call_expr)
+              corrector.remove(its_call_expr.loc.expression) if idx != 0 # since we will replace the first one
 
-              replacement_str = calculate_expect_str(its_expr, body_expr)
-              raise ::Rubocop::Error, "did not know how to auto-correct #{body_expr}" unless replacement_str
-
-              corrector.remove(its_call_expr.loc.expression) if idx != 0
-
-              replacement_str
+              calculate_expect_str(its_expr, body_expr)
             end
 
             unless body_code_strs.empty?
@@ -95,13 +91,14 @@ module RuboCop
         private
 
         def calculate_expect_str(its_expr, body_expr)
-          field_name = field_name_str(its_expr) || (raise ::Rubocop::Error,
-                                                          "did not know how to auto-correct #{body_expr}")
+          field_name = field_name_str(its_expr) ||
+                       (raise ::RuboCop::Error, "did not know how to auto-correct #{body_expr}\n\n#{body_expr.source}")
 
           equal_call_str(body_expr, field_name) ||
             should_call_str(body_expr, field_name) ||
             exception_call_str(body_expr, field_name) ||
-            (raise ::Rubocop::Error, "did not know how to auto-correct #{body_expr}")
+            (raise ::RuboCop::Error,
+                   "did not know how to auto-correct #{body_expr}, probably issue with code!\n\n#{body_expr.source}")
         end
 
         def field_name_str(its_expr)
