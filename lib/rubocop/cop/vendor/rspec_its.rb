@@ -47,6 +47,10 @@ module RuboCop
           (send nil? $%exception_expr $_)
         PATTERN
 
+        def on_block(node)
+          on_begin(node)
+        end
+
         # rubocop:disable Metrics/AbcSize
         def on_begin(node)
           its_calls = node.children.select { |n| rspec_its_call?(n) }
