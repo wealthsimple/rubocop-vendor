@@ -14,6 +14,13 @@ jobs:
         ruby-version: [3.0.6, 3.1.4, 3.2.2]
     steps:
       - uses: actions/checkout@v3
+        with:
+            fetch-depth: 0
+      - name: Run gitleaks
+        uses: wealthsimple/toolbox-script@v1
+        with:
+          script: toolbox.gitleaks.run();
+          github_api_token: ${{ secrets.WOLFBOT_GITHUB_ACTIONS_TOKEN }}
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
