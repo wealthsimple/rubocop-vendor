@@ -38,7 +38,7 @@ module RuboCop
           return unless self.class.ws_sdk_supports_arrays?
 
           path, = ws_sdk_service_call?(node)
-          return unless path.respond_to?(:type) && path.type != :array
+          return unless path.respond_to?(:type) && path.dstr_type?
 
           add_offense(path) do |corrector|
             correct_path(corrector, path)
@@ -64,26 +64,20 @@ module RuboCop
           corrector.replace(path.loc.expression, "[#{parts.join(', ')}]")
         end
 
-        # rubocop:disable Metrics/MethodLength
         def convert_str_path_to_source(path)
           path.children.flat_map do |child|
-            if child.is_a?(String)
-              [child]
+            case child&.type
+            when :str
+              convert_str_node_to_array_source(child)
+            when :begin # begin interpolation
+              child.children.first.source
+            when :send
+              child.source
             else
-              case child&.type
-              when :str
-                convert_str_node_to_array_source(child)
-              when :begin # begin interpolation
-                child.children.first.source
-              when :send
-                child.source
-              else
-                break # do not know how to auto-correct other types
-              end
+              break # do not know how to auto-correct other types
             end
           end
         end
-        # rubocop:enable Metrics/MethodLength
 
         def convert_str_node_to_array_source(node)
           node.value.delete_prefix('/').delete_suffix('/').split('/').map { |v| "\"#{v}\"" }
