@@ -11,5 +11,7 @@
 * [Vendor/RollbarWithException](cops_vendor.md#vendorrollbarwithexception)
 * [Vendor/SidekiqThrottledGem](cops_vendor.md#vendorsidekiqthrottledgem)
 * [Vendor/StrictDryStruct](cops_vendor.md#vendorstrictdrystruct)
+* [Vendor/WsSdkPathArraySlash](cops_vendor.md#vendorwssdkpatharrayslash)
+* [Vendor/WsSdkPathInjection](cops_vendor.md#vendorwssdkpathinjection)
 
 <!-- END_COP_LIST -->
