@@ -45,7 +45,7 @@ module RuboCop
         def offending_range(node)
           range_between(
             node.children[0].loc.last_column + 1,
-            node.children[3].loc.column
+            node.children[3].loc.column,
           )
         end
       end

@@ -27,11 +27,12 @@ Gem::Specification.new do |s|
     'source_code_uri' => 'https://github.com/wealthsimple/rubocop-vendor/',
     'documentation_uri' => 'https://rubocop-vendor.readthedocs.io/',
     'bug_tracker_uri' => 'https://github.com/wealthsimple/rubocop-vendor/issues',
-    'rubygems_mfa_required' => 'true'
+    'rubygems_mfa_required' => 'true',
   }
 
-  s.add_runtime_dependency('rubocop', '>= 0.53.0')
+  s.add_runtime_dependency('rubocop')
   s.add_development_dependency('git')
   s.add_development_dependency 'parse_a_changelog'
   s.add_development_dependency('simplecov')
+  s.add_development_dependency('ws-style')
 end
