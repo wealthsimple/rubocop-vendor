@@ -38,7 +38,7 @@ module RuboCop
           return unless self.class.ws_sdk_supports_arrays?
 
           path, = ws_sdk_service_call?(node)
-          return unless path && path.type != :array
+          return unless path && path.respond_to?(:type) && path.type != :array
 
           add_offense(path) do |corrector|
             correct_path(corrector, path)
@@ -66,15 +66,19 @@ module RuboCop
 
         def convert_str_path_to_source(path)
           path.children.flat_map do |child|
-            case child&.type
-            when :str
-              convert_str_node_to_array_source(child)
-            when :begin # begin interpolation
-              child.children.first.source
-            when :send
-              child.source
+            if child.is_a?(String)
+              [child]
             else
-              break # do not know how to auto-correct other types
+              case child&.type
+              when :str
+                convert_str_node_to_array_source(child)
+              when :begin # begin interpolation
+                child.children.first.source
+              when :send
+                child.source
+              else
+                break # do not know how to auto-correct other types
+              end
             end
           end
         end
