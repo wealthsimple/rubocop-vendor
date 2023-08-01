@@ -1,4 +1,24 @@
 # This is the default configuration file.
+Vendor:
+  Enabled: true
+
+Vendor/ActiveRecordConnectionExecute:
+  Enabled: true
+
+Vendor/RecursiveOpenStructGem:
+  Description: 'Avoid using the `RecursiveOpenStruct` gem.'
+  Enabled: true
+  VersionAdded: '0.1.0'
+
+Vendor/RecursiveOpenStructUse:
+  Description: 'Avoid using the `RecursiveOpenStruct` gem.'
+  Enabled: true
+  VersionAdded: '0.1.0'
+
+Vendor/RollbarInsideRescue:
+  Description: 'Only call Rollbar when handling errors inside a `rescue` block.'
+  Enabled: true
+  VersionAdded: '0.1.0'
 
 Vendor/RollbarInterpolation:
   Description: 'Avoid interpolation to improve error grouping.'
@@ -19,3 +39,23 @@ Vendor/RollbarWithException:
   Description: 'Always pass exception parameter when calling `Rollbar.error` or `critical`.'
   Enabled: true
   VersionAdded: '0.1.0'
+
+Vendor/SidekiqThrottledGem:
+  Description: 'Avoid using the `sidekiq-throttled` gem.'
+  Enabled: true
+  VersionAdded: '0.1.0'
+
+Vendor/StrictDryStruct:
+  Description: 'Avoid using `Dry::Struct` without schema schema.strict'
+  Enabled: true
+  VersionAdded: '0.1.0'
+
+Vendor/WsSdkPathArraySlash:
+  Description: 'Avoid using `ws_sdk` with path array with slash.'
+  Enabled: true
+  VersionAdded: '0.12.0'
+
+Vendor/WsSdkPathInjection:
+  Description: 'Avoid using `ws_sdk` with path injection.'
+  Enabled: true
+  VersionAdded: '0.12.0'
