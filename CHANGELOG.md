@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 0.12.1 - 2023-08-01
 ### Fixed
 - Fixes for `ws-sdk` path injection rubocops
+- Fixes to default.yml to allow ws-style to enable cops correctly
 
 ## 0.12.0 - 2023-06-09
 ### Added
