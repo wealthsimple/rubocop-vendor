@@ -32,7 +32,6 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   def properties(config, cop)
     header = [
       'Enabled by default', 'Safe', 'Supports autocorrection', 'VersionAdded',
@@ -41,45 +40,44 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     config = config.for_cop(cop)
     safe_auto_correct = config.fetch('SafeAutoCorrect', true)
     autocorrect = if cop.new.respond_to?(:support_autocorrect?) && cop.new.support_autocorrect?
-                    "Yes #{'(Unsafe)' unless safe_auto_correct}"
-                  else
-                    'No'
-                  end
+      "Yes #{'(Unsafe)' unless safe_auto_correct}"
+    else
+      'No'
+    end
     content = [[
       config.fetch('Enabled') ? 'Enabled' : 'Disabled',
       config.fetch('Safe', true) ? 'Yes' : 'No',
       autocorrect,
       config.fetch('VersionAdded', '-'),
-      config.fetch('VersionChanged', '-')
+      config.fetch('VersionChanged', '-'),
     ]]
     "#{to_table(header, content)}\n"
   end
-  # rubocop:enable Metrics/MethodLength
 
   def h2(title)
-    content = "\n".dup
+    content = +"\n"
     content << "## #{title}\n"
     content << "\n"
     content
   end
 
   def h3(title)
-    content = "\n".dup
+    content = +"\n"
     content << "### #{title}\n"
     content << "\n"
     content
   end
 
   def h4(title)
-    content = "#### #{title}\n".dup
+    content = +"#### #{title}\n"
     content << "\n"
     content
   end
 
   def code_example(ruby_code)
-    content = "```ruby\n".dup
-    content << ruby_code.text
-                        .gsub('@good', '# good').gsub('@bad', '# bad').strip
+    content = +"```ruby\n"
+    content << ruby_code.text.
+      gsub('@good', '# good').gsub('@bad', '# bad').strip
     content << "\n```\n"
     content
   end
@@ -98,7 +96,6 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     h3('Configurable attributes') + to_table(header, content)
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
   def configurable_values(pars, name)
     case name
     when /^Enforced/
@@ -123,12 +120,11 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       end
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity,Metrics/MethodLength
 
   def to_table(header, content)
     table = [
       header.join(' | '),
-      Array.new(header.size, '---').join(' | ')
+      Array.new(header.size, '---').join(' | '),
     ]
     table.concat(content.map { |c| c.join(' | ') })
     "#{table.join("\n")}\n"
@@ -168,7 +164,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     end
     return if selected_cops.empty?
 
-    content = "# #{department}\n".dup
+    content = +"# #{department}\n"
     selected_cops.each do |cop|
       content << print_cop_with_doc(cop, config)
     end
@@ -197,7 +193,6 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     cops_body(config, cop, description, examples_object, pars)
   end
 
-  # rubocop:disable Metrics/AbcSize
   def table_of_content_for_department(cops, department)
     selected_cops = cops_of_department(cops, department.to_sym).select do |cop|
       cop.to_s.start_with?('RuboCop::Cop::Vendor')
@@ -206,7 +201,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
     type_title = department[0].upcase + department[1..]
     filename = "cops_#{department.downcase}.md"
-    content = "#### Department [#{type_title}](#{filename})\n\n".dup
+    content = +"#### Department [#{type_title}](#{filename})\n\n"
     selected_cops.each do |cop|
       anchor = cop.cop_name.sub('/', '').downcase
       content << "* [#{cop.cop_name}](#{filename}##{anchor})\n"
@@ -214,39 +209,38 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
     content
   end
-  # rubocop:enable Metrics/AbcSize
 
   def print_table_of_contents(cops)
     path = "#{Dir.pwd}/manual/cops.md"
     original = File.read(path)
-    content = "<!-- START_COP_LIST -->\n".dup
+    content = +"<!-- START_COP_LIST -->\n"
 
     content << table_contents(cops)
 
     content << "\n<!-- END_COP_LIST -->"
 
     content = if original.empty?
-                content
-              else
-                original.sub(
-                  /<!-- START_COP_LIST -->.+<!-- END_COP_LIST -->/m, content
-                )
-              end
+      content
+    else
+      original.sub(
+        /<!-- START_COP_LIST -->.+<!-- END_COP_LIST -->/m, content
+      )
+    end
     File.write(path, content)
   end
 
   def table_contents(cops)
-    cops
-      .departments
-      .map(&:to_s)
-      .sort
-      .map { |department| table_of_content_for_department(cops, department) }
-      .reject(&:nil?)
-      .join("\n")
+    cops.
+      departments.
+      map(&:to_s).
+      sort.
+      map { |department| table_of_content_for_department(cops, department) }.
+      reject(&:nil?).
+      join("\n")
   end
 
   def main
-    cops   = RuboCop::Cop::Cop.registry
+    cops = RuboCop::Cop::Cop.registry
     config = RuboCop::ConfigLoader.load_file('config/default.yml')
 
     YARD::Registry.load!

@@ -38,7 +38,7 @@ module RuboCop
           return unless self.class.ws_sdk_supports_arrays?
 
           path, = ws_sdk_service_call?(node)
-          return unless path && path.type != :array
+          return unless path.respond_to?(:type) && path.dstr_type?
 
           add_offense(path) do |corrector|
             correct_path(corrector, path)

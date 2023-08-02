@@ -5,10 +5,10 @@ require 'parse_a_changelog'
 
 RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
   def get_version(git, branch = 'HEAD')
-    git.grep('VERSION = ', 'lib/**/version.rb', { object: branch })
-       .map { |_sha, matches| matches.first[1] }
-       .filter_map { |str| parse_version(str) }
-       .first
+    git.grep('VERSION = ', 'lib/**/version.rb', { object: branch }).
+      map { |_sha, matches| matches.first[1] }.
+      filter_map { |str| parse_version(str) }.
+      first
   rescue Git::GitExecuteError
     # Catches failures for branch name being master
     nil
@@ -26,10 +26,10 @@ RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
         'origin/master'
       else
         raise StandardError,
-              <<~ERROR
-                Couldn't determine main branch.
-                Does 'origin/main' or 'origin/master' need to be fetched?
-              ERROR
+          <<~ERROR
+            Couldn't determine main branch.
+            Does 'origin/main' or 'origin/master' need to be fetched?
+          ERROR
       end
   end
 
