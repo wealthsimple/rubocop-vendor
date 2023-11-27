@@ -6,9 +6,9 @@ module RuboCop
       class DisallowAfterCommit < Base
         extend AutoCorrector
 
-        NO_METH_MSG = "You should not use `%<old>s` %<desc>s"
+        NO_METH_MSG = "Do not not use `%<old>s` %<desc>s"
         NO_METHS = {
-          after_commit: "generally you want `before_commit` as after_commit is non-transactional in guarentees of running",
+          after_commit: "use `before_commit` because after_commit is non-transactional an may not run",
         }.freeze
 
         def on_send(node)
