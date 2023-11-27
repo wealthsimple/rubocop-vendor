@@ -29,11 +29,19 @@ ApplicationRecord.connection.select_all('SELECT * FROM users')
 User.connection.select_all('SELECT * FROM users')
 ```
 
-## Vendor/RecursiveOpenStructGem
+## Vendor/DisallowAfterCommit
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
 Enabled | Yes | No | - | -
+
+No documentation
+
+## Vendor/RecursiveOpenStructGem
+
+Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
+--- | --- | --- | --- | ---
+Enabled | Yes | No | 0.1.0 | -
 
 This cop flags uses of the recursive-open-struct gem.
 
@@ -46,7 +54,7 @@ https://ruby-doc.org/stdlib-3.0.1/libdoc/ostruct/rdoc/OpenStruct.html#class-Open
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | - | -
+Enabled | Yes | No | 0.1.0 | -
 
 This cop flags uses of RecursiveOpenStruct. RecursiveOpenStruct is a library used in the
 Wealthsimple ecosystem that is being phased out due to security issues.
@@ -79,7 +87,7 @@ allow(test_double).to receive(:a).and_return('b')
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | - | -
+Enabled | Yes | No | 0.1.0 | -
 
 This cop checks for Rollbar calls outside `rescue` blocks.
 
@@ -205,7 +213,7 @@ Rollbar.error(exception, "Unable to sync account")
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | - | -
+Enabled | Yes | No | 0.1.0 | -
 
 This cop flags uses of the sidekiq-throttled gem.
 
@@ -220,7 +228,7 @@ https://wealthsimple.slack.com/archives/C19UB3HNZ/p1683721247371709 for more det
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | - | -
+Enabled | Yes | No | 0.1.0 | -
 
 This cop flags uses of DryStruct without strict mode
 
@@ -231,7 +239,7 @@ We want to enfore strict mode which will throw an error in that case.
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | - | -
+Enabled | Yes | No | 0.12.0 | -
 
 This cop checks for `Ws::Service#get,patch,post,put,delete,...` usage
 where the array format is used, but it contains (probably not) intended slashes.
@@ -251,7 +259,7 @@ Ws::AccountService.post(["test", "foo"])
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
 --- | --- | --- | --- | ---
-Enabled | Yes | No | - | -
+Enabled | Yes | No | 0.12.0 | -
 
 This cop checks for `Ws::Service#get,patch,post,put,delete,...` usage and suggests to use component based paths
 instead of using interpolated values that could be user input.

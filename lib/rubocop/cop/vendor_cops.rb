@@ -4,6 +4,7 @@ module RuboCop
 end
 
 require_relative 'vendor/active_record_connection_execute'
+require_relative 'vendor/disallow_after_commit'
 require_relative 'vendor/recursive_open_struct_gem'
 require_relative 'vendor/sidekiq_throttled_gem'
 require_relative 'vendor/recursive_open_struct_use'

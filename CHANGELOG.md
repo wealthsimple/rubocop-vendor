@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.13.0 - 2023-11-27
+### Added
+- Disallow `after_commit` as it has no transactional guarantee, switch to `before_commit`.
+
 ## 0.12.1 - 2023-08-01
 ### Fixed
 - Fixes for `ws-sdk` path injection rubocops
