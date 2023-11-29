@@ -8,7 +8,7 @@ module RuboCop
 
         NO_METH_MSG = "Do not not use `%<old>s` %<desc>s"
         NO_METHS = {
-          after_commit: "use `before_commit` because after_commit is non-transactional an may not run",
+          after_commit: "use `after_save` because `after_commit` is non-transactional an may not run",
         }.freeze
 
         def on_send(node)
