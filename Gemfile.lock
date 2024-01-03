@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-vendor (0.12.1)
+    rubocop-vendor (0.12.2)
       rubocop
 
 GEM

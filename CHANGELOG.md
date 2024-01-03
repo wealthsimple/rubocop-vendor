@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.12.2 - 2024-01-03
+### Changed
+- Removed Rubocop config for Rails
+
 ## 0.12.1 - 2023-08-01
 ### Fixed
 - Fixes for `ws-sdk` path injection rubocops
