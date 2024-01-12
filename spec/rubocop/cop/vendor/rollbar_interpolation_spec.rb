@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::RollbarInterpolation, :config, :config do
+RSpec.describe RuboCop::Cop::Vendor::RollbarInterpolation, :config do
   it 'registers an offense when using `Rollbar.error` with interpolated string' do
     expect_offense(<<~'RUBY')
       Rollbar.error(e, "Unable to sync account #{account[:id]}")

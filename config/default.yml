@@ -59,3 +59,8 @@ Vendor/WsSdkPathInjection:
   Description: 'Avoid using `ws_sdk` with path injection.'
   Enabled: true
   VersionAdded: '0.12.0'
+
+Vendor/ActiveRecordBaseTransactionUse:
+  Description: 'Avoid using ActiveRecord::Base.transaction.'
+  Enabled: true
+  VersionAdded: '0.13.0'

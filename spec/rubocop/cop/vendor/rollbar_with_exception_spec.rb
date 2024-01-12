@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::RollbarWithException, :config, :config do
+RSpec.describe RuboCop::Cop::Vendor::RollbarWithException, :config do
   it 'registers an offense when using `Rollbar.error` without exception' do
     expect_offense(<<~RUBY)
       begin

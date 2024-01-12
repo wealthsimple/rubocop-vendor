@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.13.0 - 2024-01-11
+### Changed
+- Added rule for `ActiveRecord::Base.transaction` use
+
 ## 0.12.2 - 2024-01-03
 ### Changed
 - Removed Rubocop config for Rails

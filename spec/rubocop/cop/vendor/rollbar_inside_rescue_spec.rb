@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::RollbarInsideRescue, :config, :config do
+RSpec.describe RuboCop::Cop::Vendor::RollbarInsideRescue, :config do
   it 'registers an offense when using `Rollbar.error` without rescue' do
     expect_offense(<<~RUBY)
       Rollbar.error('Unable to perform division')

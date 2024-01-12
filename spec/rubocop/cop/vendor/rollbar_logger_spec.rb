@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::RollbarLogger, :config, :config do
+RSpec.describe RuboCop::Cop::Vendor::RollbarLogger, :config do
   it 'registers an offense when using `Rollbar.debug`' do
     expect_offense(<<~RUBY)
       Rollbar.debug('Stale message')
