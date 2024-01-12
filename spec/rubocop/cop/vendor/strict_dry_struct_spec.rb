@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Vendor::StrictDryStruct, :config, :config do
+RSpec.describe RuboCop::Cop::Vendor::StrictDryStruct, :config do
   it 'registers an offense when using Dry::Struct without strict' do
     expect_offense(<<~RUBY)
       class ExampleStruct < Dry::Struct
