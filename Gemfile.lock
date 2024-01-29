@@ -124,7 +124,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
-    ws-style (7.4.1)
+    ws-style (7.4.2)
       rubocop-rspec (>= 2.2.0)
       rubocop-vendor (>= 0.11)
       standard (>= 1.30.1)
