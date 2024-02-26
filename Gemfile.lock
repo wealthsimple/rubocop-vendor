@@ -7,7 +7,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.1.3)
+    activesupport (7.1.3.2)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -48,7 +48,7 @@ GEM
     polyglot (0.3.5)
     public_suffix (5.0.4)
     racc (1.7.3)
-    rack (3.0.9)
+    rack (3.0.9.1)
     rainbow (3.1.1)
     rake (13.1.0)
     rchardet (1.8.0)
@@ -66,7 +66,7 @@ GEM
     rspec-mocks (3.13.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-support (3.13.0)
+    rspec-support (3.13.1)
     rubocop (1.60.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
