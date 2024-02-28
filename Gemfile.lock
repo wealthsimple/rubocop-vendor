@@ -130,7 +130,7 @@ GEM
       standard (>= 1.30.1)
       standard-custom (>= 1.0.2)
       standard-rails (>= 0.1.0)
-    yard (0.9.34)
+    yard (0.9.35)
 
 PLATFORMS
   ruby
