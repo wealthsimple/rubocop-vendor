@@ -21,8 +21,6 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby-version }}
-      - name: Fetch main branch
-        run: git fetch origin main
       - name: Lint
         run: bundle exec rubocop
       - name: Test
