@@ -14,13 +14,13 @@ jobs:
         ruby-version: [3.2.2]
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby-version }}
-      - name: Fetch main branch
-        run: git fetch origin main
       - name: Lint
         run: bundle exec rubocop
       - name: Test
