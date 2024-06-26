@@ -5,7 +5,7 @@ require 'parse_a_changelog'
 
 RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
   def get_version(git, branch = 'HEAD')
-    git.grep('VERSION = ', 'lib/**/version.rb', { object: branch }).
+    git.grep('VERSION = ', 'lib/*/version.rb', { object: branch }).
       map { |_sha, matches| matches.first[1] }.
       filter_map { |str| parse_version(str) }.
       first
@@ -36,21 +36,26 @@ RSpec.describe 'a published gem' do # rubocop:disable RSpec/DescribeClass
   def needs_version_bump?
     base = git.merge_base(main_branch, 'HEAD').first&.sha
     base ||= main_branch
-    git.diff(base, 'HEAD').any? do |diff|
-      not_gemfile?(diff) && not_lockfile?(diff) && not_ci_file?(diff)
-    end
-  end
-
-  def not_lockfile?(diff)
-    diff.path != 'Gemfile.lock'
+    git.diff(base, 'HEAD').any? { |diff|
+      not_gemfile?(diff) && not_dotfile?(diff) && not_docs?(diff) && not_spec?(diff)
+    }
   end
 
   def not_gemfile?(diff)
-    diff.path != 'Gemfile'
+    !['Gemfile', 'Gemfile.lock'].include?(diff.path)
   end
 
-  def not_ci_file?(diff)
-    !diff.path.start_with?('.github/')
+  def not_docs?(diff)
+    !diff.path.end_with?('.md')
+  end
+
+  def not_spec?(diff)
+    !diff.path.start_with?('spec/')
+  end
+
+  def not_dotfile?(diff)
+    # Ignore dotfiles, like .gitignore and CI files like .github/...
+    !diff.path.start_with?('.')
   end
 
   let(:git) { Git.open('.') }
