@@ -214,8 +214,6 @@ resulting in at-most once delivery of sidekiq jobs, instead of at-least once del
 of sidekiq jobs. This means there is a relatively good chance you will LOSE JOBS that were enqueued
 if the sidekiq-process runs out of memory or does not shutdown gracefully.
 
-https://wealthsimple.slack.com/archives/C19UB3HNZ/p1683721247371709 for more details
-
 ## Vendor/StrictDryStruct
 
 Enabled by default | Safe | Supports autocorrection | VersionAdded | VersionChanged
