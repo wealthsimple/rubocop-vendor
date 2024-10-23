@@ -69,7 +69,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def h4(title)
-    content = +"#### #{title}\n"
+    content = "#### #{title}\n"
     content << "\n"
     content
   end
@@ -164,7 +164,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     end
     return if selected_cops.empty?
 
-    content = +"# #{department}\n"
+    content = "# #{department}\n"
     selected_cops.each do |cop|
       content << print_cop_with_doc(cop, config)
     end
@@ -201,7 +201,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
     type_title = department[0].upcase + department[1..]
     filename = "cops_#{department.downcase}.md"
-    content = +"#### Department [#{type_title}](#{filename})\n\n"
+    content = "#### Department [#{type_title}](#{filename})\n\n"
     selected_cops.each do |cop|
       anchor = cop.cop_name.sub('/', '').downcase
       content << "* [#{cop.cop_name}](#{filename}##{anchor})\n"
