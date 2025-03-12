@@ -9,6 +9,6 @@ gemspec
 gem 'byebug', platform: :mri
 gem 'rake'
 gem 'rspec'
-gem 'rubocop'
+gem 'rubocop', '>= 1.72.0'
 gem 'rubocop-rspec'
 gem 'yard', '~> 0.9'
