@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'byebug' unless %w[jruby java].include?(RUBY_PLATFORM)
-require 'rubocop-vendor'
+require 'rubocop/vendor'
 require 'rubocop/rspec/support'
 
 if ENV['COVERAGE'] == 'true'

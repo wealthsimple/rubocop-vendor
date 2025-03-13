@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
     A collection of RuboCop cops to check for vendor integration
     in Ruby code.
   DESCRIPTION
-  s.metadata['default_lint_roller_plugin'] = 'RuboCop::Vendor::Plugin'
 
   s.email = 'foss@wealthsimple.com'
   s.files = `git ls-files config lib LICENSE.txt README.md`.split($RS)
@@ -29,6 +28,7 @@ Gem::Specification.new do |s|
     'documentation_uri' => 'https://rubocop-vendor.readthedocs.io/',
     'bug_tracker_uri' => 'https://github.com/wealthsimple/rubocop-vendor/issues',
     'rubygems_mfa_required' => 'true',
+    'default_lint_roller_plugin' => 'RuboCop::Vendor::Plugin',
   }
 
   s.add_runtime_dependency('rubocop')
