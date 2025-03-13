@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-vendor (0.14.1)
+    rubocop-vendor (0.14.2)
       lint_roller
       rubocop
 
