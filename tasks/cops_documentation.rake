@@ -2,7 +2,7 @@
 
 require 'yard'
 require 'rubocop'
-require 'rubocop-vendor'
+require 'rubocop/vendor'
 
 YARD::Rake::YardocTask.new(:yard_for_generate_documentation) do |task|
   task.files = ['lib/rubocop/cop/**/*.rb']
