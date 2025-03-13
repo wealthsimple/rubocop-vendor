@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
-module RuboCop
-  # RuboCop Vendor project namespace
-  module Vendor
-    PROJECT_ROOT = Pathname.new(__dir__).parent.parent.expand_path.freeze
-    CONFIG_DEFAULT = PROJECT_ROOT.join('config', 'default.yml').freeze
-    CONFIG = YAML.safe_load(CONFIG_DEFAULT.read).freeze
+require 'rubocop'
+require_relative 'vendor/version'
+require_relative 'vendor/plugin'
 
-    private_constant(:CONFIG_DEFAULT, :PROJECT_ROOT)
-  end
-end
+require_relative 'cop/vendor_cops'

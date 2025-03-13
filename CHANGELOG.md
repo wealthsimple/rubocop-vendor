@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.14.1 - 2024-03-13
+### Changed
+- Fixed issue with deplicate metadata definitions.
+
 ## 0.14.0 - 2024-03-12
 ### Changed
 - Update to using new plugins api
